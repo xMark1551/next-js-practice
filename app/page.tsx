@@ -8,6 +8,9 @@ const page = () => {
 
         <Link href="/auth/login">Login</Link>
         <Link href="/posts">Post</Link>
+
+        <Link href="/admin">Admin</Link>
+        <Link href="/client">Client</Link>
       </div>
     </main>
   );
