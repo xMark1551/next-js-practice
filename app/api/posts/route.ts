@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import db from "@/lib/db";
 
 // GET /api/posts
 export async function GET() {
@@ -8,12 +9,13 @@ export async function GET() {
   ]);
 }
 
-// POST /api/posts
 export async function POST(req: Request) {
   const body = await req.json();
+  const { title, description } = body;
 
-  return NextResponse.json({
-    message: "Created",
-    data: body,
-  });
+  console.log(title, description);
+
+  await db.query("INSERT INTO posts (title, content) VALUES (?, ?)", [title, description]);
+
+  return Response.json({ message: "User added" });
 }
