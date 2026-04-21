@@ -98,7 +98,8 @@ export const SampleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  created: 'created'
+  created: 'created',
+  updated: 'updated'
 } as const
 
 export type SampleScalarFieldEnum = (typeof SampleScalarFieldEnum)[keyof typeof SampleScalarFieldEnum]
@@ -123,43 +124,18 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
 export const NullsOrder = {
   first: 'first',
   last: 'last'
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-export const migrationsOrderByRelevanceFieldEnum = {
-  name: 'name'
-} as const
-
-export type migrationsOrderByRelevanceFieldEnum = (typeof migrationsOrderByRelevanceFieldEnum)[keyof typeof migrationsOrderByRelevanceFieldEnum]
-
-
-export const postsOrderByRelevanceFieldEnum = {
-  title: 'title',
-  content: 'content',
-  image: 'image'
-} as const
-
-export type postsOrderByRelevanceFieldEnum = (typeof postsOrderByRelevanceFieldEnum)[keyof typeof postsOrderByRelevanceFieldEnum]
-
-
-export const sampleOrderByRelevanceFieldEnum = {
-  name: 'name',
-  description: 'description'
-} as const
-
-export type sampleOrderByRelevanceFieldEnum = (typeof sampleOrderByRelevanceFieldEnum)[keyof typeof sampleOrderByRelevanceFieldEnum]
-
-
-export const usersOrderByRelevanceFieldEnum = {
-  name: 'name',
-  email: 'email',
-  password: 'password'
-} as const
-
-export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
 

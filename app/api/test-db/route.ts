@@ -1,7 +1,19 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
 
 export async function GET() {
-  const data = await prisma.posts.findMany();
-  return NextResponse.json(data);
+  try {
+    const result = await prisma.$queryRaw`SELECT 1 as connected`;
+
+    return Response.json({
+      success: true,
+      message: "Database connected",
+      result,
+    });
+  } catch (error) {
+    return Response.json({
+      success: false,
+      message: "Database connection failed",
+      error: String(error),
+    });
+  }
 }

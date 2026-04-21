@@ -39,6 +39,7 @@ export type SampleMinAggregateOutputType = {
   name: string | null
   description: string | null
   created: Date | null
+  updated: Date | null
 }
 
 export type SampleMaxAggregateOutputType = {
@@ -46,6 +47,7 @@ export type SampleMaxAggregateOutputType = {
   name: string | null
   description: string | null
   created: Date | null
+  updated: Date | null
 }
 
 export type SampleCountAggregateOutputType = {
@@ -53,6 +55,7 @@ export type SampleCountAggregateOutputType = {
   name: number
   description: number
   created: number
+  updated: number
   _all: number
 }
 
@@ -70,6 +73,7 @@ export type SampleMinAggregateInputType = {
   name?: true
   description?: true
   created?: true
+  updated?: true
 }
 
 export type SampleMaxAggregateInputType = {
@@ -77,6 +81,7 @@ export type SampleMaxAggregateInputType = {
   name?: true
   description?: true
   created?: true
+  updated?: true
 }
 
 export type SampleCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type SampleCountAggregateInputType = {
   name?: true
   description?: true
   created?: true
+  updated?: true
   _all?: true
 }
 
@@ -178,6 +184,7 @@ export type SampleGroupByOutputType = {
   name: string
   description: string
   created: Date
+  updated: Date
   _count: SampleCountAggregateOutputType | null
   _avg: SampleAvgAggregateOutputType | null
   _sum: SampleSumAggregateOutputType | null
@@ -208,6 +215,7 @@ export type sampleWhereInput = {
   name?: Prisma.StringFilter<"sample"> | string
   description?: Prisma.StringFilter<"sample"> | string
   created?: Prisma.DateTimeFilter<"sample"> | Date | string
+  updated?: Prisma.DateTimeFilter<"sample"> | Date | string
 }
 
 export type sampleOrderByWithRelationInput = {
@@ -215,7 +223,7 @@ export type sampleOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   created?: Prisma.SortOrder
-  _relevance?: Prisma.sampleOrderByRelevanceInput
+  updated?: Prisma.SortOrder
 }
 
 export type sampleWhereUniqueInput = Prisma.AtLeast<{
@@ -226,6 +234,7 @@ export type sampleWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"sample"> | string
   description?: Prisma.StringFilter<"sample"> | string
   created?: Prisma.DateTimeFilter<"sample"> | Date | string
+  updated?: Prisma.DateTimeFilter<"sample"> | Date | string
 }, "id">
 
 export type sampleOrderByWithAggregationInput = {
@@ -233,6 +242,7 @@ export type sampleOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   created?: Prisma.SortOrder
+  updated?: Prisma.SortOrder
   _count?: Prisma.sampleCountOrderByAggregateInput
   _avg?: Prisma.sampleAvgOrderByAggregateInput
   _max?: Prisma.sampleMaxOrderByAggregateInput
@@ -248,12 +258,14 @@ export type sampleScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"sample"> | string
   description?: Prisma.StringWithAggregatesFilter<"sample"> | string
   created?: Prisma.DateTimeWithAggregatesFilter<"sample"> | Date | string
+  updated?: Prisma.DateTimeWithAggregatesFilter<"sample"> | Date | string
 }
 
 export type sampleCreateInput = {
   name: string
   description: string
   created?: Date | string
+  updated?: Date | string
 }
 
 export type sampleUncheckedCreateInput = {
@@ -261,12 +273,14 @@ export type sampleUncheckedCreateInput = {
   name: string
   description: string
   created?: Date | string
+  updated?: Date | string
 }
 
 export type sampleUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type sampleUncheckedUpdateInput = {
@@ -274,6 +288,7 @@ export type sampleUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type sampleCreateManyInput = {
@@ -281,12 +296,14 @@ export type sampleCreateManyInput = {
   name: string
   description: string
   created?: Date | string
+  updated?: Date | string
 }
 
 export type sampleUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type sampleUncheckedUpdateManyInput = {
@@ -294,12 +311,7 @@ export type sampleUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   created?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type sampleOrderByRelevanceInput = {
-  fields: Prisma.sampleOrderByRelevanceFieldEnum | Prisma.sampleOrderByRelevanceFieldEnum[]
-  sort: Prisma.SortOrder
-  search: string
+  updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type sampleCountOrderByAggregateInput = {
@@ -307,6 +319,7 @@ export type sampleCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   created?: Prisma.SortOrder
+  updated?: Prisma.SortOrder
 }
 
 export type sampleAvgOrderByAggregateInput = {
@@ -318,6 +331,7 @@ export type sampleMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   created?: Prisma.SortOrder
+  updated?: Prisma.SortOrder
 }
 
 export type sampleMinOrderByAggregateInput = {
@@ -325,6 +339,7 @@ export type sampleMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   created?: Prisma.SortOrder
+  updated?: Prisma.SortOrder
 }
 
 export type sampleSumOrderByAggregateInput = {
@@ -338,18 +353,34 @@ export type sampleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name?: boolean
   description?: boolean
   created?: boolean
+  updated?: boolean
 }, ExtArgs["result"]["sample"]>
 
+export type sampleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
+  name?: boolean
+  description?: boolean
+  created?: boolean
+  updated?: boolean
+}, ExtArgs["result"]["sample"]>
 
+export type sampleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
+  name?: boolean
+  description?: boolean
+  created?: boolean
+  updated?: boolean
+}, ExtArgs["result"]["sample"]>
 
 export type sampleSelectScalar = {
   id?: boolean
   name?: boolean
   description?: boolean
   created?: boolean
+  updated?: boolean
 }
 
-export type sampleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "created", ExtArgs["result"]["sample"]>
+export type sampleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "created" | "updated", ExtArgs["result"]["sample"]>
 
 export type $samplePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "sample"
@@ -359,6 +390,7 @@ export type $samplePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     name: string
     description: string
     created: Date
+    updated: Date
   }, ExtArgs["result"]["sample"]>
   composites: {}
 }
@@ -477,6 +509,30 @@ export interface sampleDelegate<ExtArgs extends runtime.Types.Extensions.Interna
   createMany<T extends sampleCreateManyArgs>(args?: Prisma.SelectSubset<T, sampleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
+   * Create many Samples and returns the data saved in the database.
+   * @param {sampleCreateManyAndReturnArgs} args - Arguments to create many Samples.
+   * @example
+   * // Create many Samples
+   * const sample = await prisma.sample.createManyAndReturn({
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * 
+   * // Create many Samples and only return the `id`
+   * const sampleWithIdOnly = await prisma.sample.createManyAndReturn({
+   *   select: { id: true },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * Note, that providing `undefined` is treated as the value not being there.
+   * Read more here: https://pris.ly/d/null-undefined
+   * 
+   */
+  createManyAndReturn<T extends sampleCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, sampleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$samplePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+  /**
    * Delete a Sample.
    * @param {sampleDeleteArgs} args - Arguments to delete one Sample.
    * @example
@@ -539,6 +595,36 @@ export interface sampleDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * 
    */
   updateMany<T extends sampleUpdateManyArgs>(args: Prisma.SelectSubset<T, sampleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+
+  /**
+   * Update zero or more Samples and returns the data updated in the database.
+   * @param {sampleUpdateManyAndReturnArgs} args - Arguments to update many Samples.
+   * @example
+   * // Update many Samples
+   * const sample = await prisma.sample.updateManyAndReturn({
+   *   where: {
+   *     // ... provide filter here
+   *   },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * 
+   * // Update zero or more Samples and only return the `id`
+   * const sampleWithIdOnly = await prisma.sample.updateManyAndReturn({
+   *   select: { id: true },
+   *   where: {
+   *     // ... provide filter here
+   *   },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * Note, that providing `undefined` is treated as the value not being there.
+   * Read more here: https://pris.ly/d/null-undefined
+   * 
+   */
+  updateManyAndReturn<T extends sampleUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, sampleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$samplePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Sample.
@@ -732,6 +818,7 @@ export interface sampleFieldRefs {
   readonly name: Prisma.FieldRef<"sample", 'String'>
   readonly description: Prisma.FieldRef<"sample", 'String'>
   readonly created: Prisma.FieldRef<"sample", 'DateTime'>
+  readonly updated: Prisma.FieldRef<"sample", 'DateTime'>
 }
     
 
@@ -946,6 +1033,25 @@ export type sampleCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
+ * sample createManyAndReturn
+ */
+export type sampleCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the sample
+   */
+  select?: Prisma.sampleSelectCreateManyAndReturn<ExtArgs> | null
+  /**
+   * Omit specific fields from the sample
+   */
+  omit?: Prisma.sampleOmit<ExtArgs> | null
+  /**
+   * The data used to create many samples.
+   */
+  data: Prisma.sampleCreateManyInput | Prisma.sampleCreateManyInput[]
+  skipDuplicates?: boolean
+}
+
+/**
  * sample update
  */
 export type sampleUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -971,6 +1077,32 @@ export type sampleUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
  * sample updateMany
  */
 export type sampleUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * The data used to update samples.
+   */
+  data: Prisma.XOR<Prisma.sampleUpdateManyMutationInput, Prisma.sampleUncheckedUpdateManyInput>
+  /**
+   * Filter which samples to update
+   */
+  where?: Prisma.sampleWhereInput
+  /**
+   * Limit how many samples to update.
+   */
+  limit?: number
+}
+
+/**
+ * sample updateManyAndReturn
+ */
+export type sampleUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the sample
+   */
+  select?: Prisma.sampleSelectUpdateManyAndReturn<ExtArgs> | null
+  /**
+   * Omit specific fields from the sample
+   */
+  omit?: Prisma.sampleOmit<ExtArgs> | null
   /**
    * The data used to update samples.
    */

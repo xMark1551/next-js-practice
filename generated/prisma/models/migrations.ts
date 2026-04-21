@@ -206,7 +206,6 @@ export type migrationsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   executed_at?: Prisma.SortOrder
-  _relevance?: Prisma.migrationsOrderByRelevanceInput
 }
 
 export type migrationsWhereUniqueInput = Prisma.AtLeast<{
@@ -277,12 +276,6 @@ export type migrationsUncheckedUpdateManyInput = {
   executed_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type migrationsOrderByRelevanceInput = {
-  fields: Prisma.migrationsOrderByRelevanceFieldEnum | Prisma.migrationsOrderByRelevanceFieldEnum[]
-  sort: Prisma.SortOrder
-  search: string
-}
-
 export type migrationsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -333,7 +326,17 @@ export type migrationsSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   executed_at?: boolean
 }, ExtArgs["result"]["migrations"]>
 
+export type migrationsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
+  name?: boolean
+  executed_at?: boolean
+}, ExtArgs["result"]["migrations"]>
 
+export type migrationsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
+  name?: boolean
+  executed_at?: boolean
+}, ExtArgs["result"]["migrations"]>
 
 export type migrationsSelectScalar = {
   id?: boolean
@@ -468,6 +471,30 @@ export interface migrationsDelegate<ExtArgs extends runtime.Types.Extensions.Int
   createMany<T extends migrationsCreateManyArgs>(args?: Prisma.SelectSubset<T, migrationsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
+   * Create many Migrations and returns the data saved in the database.
+   * @param {migrationsCreateManyAndReturnArgs} args - Arguments to create many Migrations.
+   * @example
+   * // Create many Migrations
+   * const migrations = await prisma.migrations.createManyAndReturn({
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * 
+   * // Create many Migrations and only return the `id`
+   * const migrationsWithIdOnly = await prisma.migrations.createManyAndReturn({
+   *   select: { id: true },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * Note, that providing `undefined` is treated as the value not being there.
+   * Read more here: https://pris.ly/d/null-undefined
+   * 
+   */
+  createManyAndReturn<T extends migrationsCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, migrationsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$migrationsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+  /**
    * Delete a Migrations.
    * @param {migrationsDeleteArgs} args - Arguments to delete one Migrations.
    * @example
@@ -530,6 +557,36 @@ export interface migrationsDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * 
    */
   updateMany<T extends migrationsUpdateManyArgs>(args: Prisma.SelectSubset<T, migrationsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+
+  /**
+   * Update zero or more Migrations and returns the data updated in the database.
+   * @param {migrationsUpdateManyAndReturnArgs} args - Arguments to update many Migrations.
+   * @example
+   * // Update many Migrations
+   * const migrations = await prisma.migrations.updateManyAndReturn({
+   *   where: {
+   *     // ... provide filter here
+   *   },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * 
+   * // Update zero or more Migrations and only return the `id`
+   * const migrationsWithIdOnly = await prisma.migrations.updateManyAndReturn({
+   *   select: { id: true },
+   *   where: {
+   *     // ... provide filter here
+   *   },
+   *   data: [
+   *     // ... provide data here
+   *   ]
+   * })
+   * Note, that providing `undefined` is treated as the value not being there.
+   * Read more here: https://pris.ly/d/null-undefined
+   * 
+   */
+  updateManyAndReturn<T extends migrationsUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, migrationsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$migrationsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Migrations.
@@ -936,6 +993,25 @@ export type migrationsCreateManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * migrations createManyAndReturn
+ */
+export type migrationsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the migrations
+   */
+  select?: Prisma.migrationsSelectCreateManyAndReturn<ExtArgs> | null
+  /**
+   * Omit specific fields from the migrations
+   */
+  omit?: Prisma.migrationsOmit<ExtArgs> | null
+  /**
+   * The data used to create many migrations.
+   */
+  data: Prisma.migrationsCreateManyInput | Prisma.migrationsCreateManyInput[]
+  skipDuplicates?: boolean
+}
+
+/**
  * migrations update
  */
 export type migrationsUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -961,6 +1037,32 @@ export type migrationsUpdateArgs<ExtArgs extends runtime.Types.Extensions.Intern
  * migrations updateMany
  */
 export type migrationsUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * The data used to update migrations.
+   */
+  data: Prisma.XOR<Prisma.migrationsUpdateManyMutationInput, Prisma.migrationsUncheckedUpdateManyInput>
+  /**
+   * Filter which migrations to update
+   */
+  where?: Prisma.migrationsWhereInput
+  /**
+   * Limit how many migrations to update.
+   */
+  limit?: number
+}
+
+/**
+ * migrations updateManyAndReturn
+ */
+export type migrationsUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the migrations
+   */
+  select?: Prisma.migrationsSelectUpdateManyAndReturn<ExtArgs> | null
+  /**
+   * Omit specific fields from the migrations
+   */
+  omit?: Prisma.migrationsOmit<ExtArgs> | null
   /**
    * The data used to update migrations.
    */
