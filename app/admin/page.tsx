@@ -1,17 +1,17 @@
 import AddPostModal from "./components/AddPostModal";
+import PostsTable from "./components/PostsTable";
+import { getPosts } from "@/lib/services/post.service";
 
-export type Posts = {
-  title: string;
-  description: string;
-};
+const Page = async () => {
+  const posts = await getPosts();
 
-const page = () => {
   return (
-    <div className="p-20 space-y-6">
+    <div className="space-y-6">
       <h1>Post</h1>
       <AddPostModal />
+      <PostsTable posts={posts} />
     </div>
   );
 };
 
-export default page;
+export default Page;

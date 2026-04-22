@@ -1,21 +1,17 @@
 import { NextResponse } from "next/server";
-import db from "@/lib/db";
+
+import { getPosts, createPost } from "@/lib/services/post.service";
 
 // GET /api/posts
 export async function GET() {
-  return NextResponse.json([
-    { id: 1, title: "Post 1" },
-    { id: 2, title: "Post 2" },
-  ]);
+  const result = await getPosts();
+  return NextResponse.json(result);
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { title, description } = body;
+  const { title, description } = await req.json();
 
-  console.log(title, description);
+  const result = await createPost(title, description);
 
-  await db.query("INSERT INTO posts (title, content) VALUES (?, ?)", [title, description]);
-
-  return Response.json({ message: "User added" });
+  return NextResponse.json(result);
 }

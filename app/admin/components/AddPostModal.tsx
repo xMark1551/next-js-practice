@@ -13,8 +13,13 @@ import {
 } from "@/components/ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+// import { useRouter } from "next/navigation";
+import { createPostAction } from "../action/post.action";
 
-import type { Posts } from "@/app/admin/page";
+type Posts = {
+  title: string;
+  description: string;
+};
 
 const INITIAL_POSTS: Posts = {
   title: "",
@@ -22,22 +27,23 @@ const INITIAL_POSTS: Posts = {
 };
 
 const AddPostModal = () => {
+  // const router = useRouter();
   const [postObj, setPostObj] = useState<Posts>(INITIAL_POSTS);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("postObj", postObj);
 
-    await fetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify(postObj),
-    });
+    await createPostAction(postObj.title, postObj.description);
+
+    setOpen(false);
+    // router.refresh();
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Open Dialog</Button>
+        <Button variant="outline">Add Post</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">
         <form onSubmit={handleSubmit}>
