@@ -24,15 +24,15 @@ export const createPost = async (title: string, description: string, image?: Fil
 
   console.log("createPost", url);
 
-  // const result = await prisma.posts.create({
-  //   data: {
-  //     title,
-  //     content: description,
-  //   },
-  // });
+  const result = await prisma.posts.create({
+    data: {
+      title,
+      content: description,
+    },
+  });
 
   revalidateTag("posts", "");
-  // return result;
+  return result;
 };
 
 export const deletePost = async (id: number) => {
