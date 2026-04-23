@@ -13,31 +13,37 @@ import {
 } from "@/components/ui/dialog";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-// import { useRouter } from "next/navigation";
 import { createPostAction } from "../action/post.action";
+import type { postsModel } from "@/generated/prisma/models";
 
-type Posts = {
-  title: string;
+type CreatePost = Omit<postsModel, "id" | "created_at" | "image" | "content" | "status"> & {
+  image?: File | null;
   description: string;
 };
 
-const INITIAL_POSTS: Posts = {
+const INITIAL_POSTS: CreatePost = {
   title: "",
   description: "",
+  image: null,
 };
 
 const AddPostModal = () => {
-  // const router = useRouter();
-  const [postObj, setPostObj] = useState<Posts>(INITIAL_POSTS);
+  const [postObj, setPostObj] = useState<CreatePost>(INITIAL_POSTS);
   const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await createPostAction(postObj.title, postObj.description);
+    const formData = new FormData();
+    formData.append("title", postObj.title);
+    formData.append("description", postObj.description);
+    if (postObj.image) {
+      formData.append("image", postObj.image);
+    }
+
+    await createPostAction(formData);
 
     setOpen(false);
-    // router.refresh();
   };
 
   return (
@@ -73,6 +79,17 @@ const AddPostModal = () => {
                 value={postObj.description}
                 onChange={(e) => {
                   setPostObj({ ...postObj, description: e.target.value });
+                }}
+              />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="input-field-description">Image</FieldLabel>
+              <Input
+                id="input-field-username"
+                type="file"
+                placeholder="Enter your username"
+                onChange={(e) => {
+                  setPostObj({ ...postObj, image: e.target.files?.[0] });
                 }}
               />
             </Field>
