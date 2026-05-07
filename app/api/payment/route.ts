@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+import type { AxiosError } from "axios";
 
 export async function GET(req: Request) {
   console.log("sample");
@@ -45,8 +46,11 @@ export async function POST(req: Request, res: Response) {
     return NextResponse.json({
       checkout_url: response.data.data.attributes.checkout_url,
     });
-  } catch (err) {
-    console.log(err.response.data);
-    return NextResponse.json(err.response.data);
+  } catch (err: unknown) {
+    const error = err as AxiosError;
+
+    console.log(error.response?.data);
+
+    return NextResponse.json(error.response?.data);
   }
 }

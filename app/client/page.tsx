@@ -14,7 +14,7 @@ const page = () => {
   return (
     <div>
       <h1>Client</h1>
-      <button onClick={handlePayment}>Pay</button>
+      <Button onClick={handlePayment}>Pay</Button>
     </div>
   );
 };
