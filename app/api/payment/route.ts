@@ -2,13 +2,7 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 import type { AxiosError } from "axios";
 
-export async function GET(req: Request) {
-  console.log("sample");
-
-  return NextResponse.json("sample");
-}
-
-export async function POST(req: Request, res: Response) {
+export async function POST() {
   console.log("sample");
 
   try {
@@ -51,6 +45,11 @@ export async function POST(req: Request, res: Response) {
 
     console.log(error.response?.data);
 
-    return NextResponse.json(error.response?.data);
+    return NextResponse.json(
+      {
+        error: error.response?.data ?? "Payment error",
+      },
+      { status: 500 },
+    );
   }
 }
